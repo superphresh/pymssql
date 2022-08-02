@@ -24,7 +24,7 @@ This is an effort to convert the pymssql low-level C module to Cython.
 # MA  02110-1301  USA
 #
 
-DEF PYMSSQL_DEBUG = 0
+DEF PYMSSQL_DEBUG = 1
 DEF PYMSSQL_DEBUG_ERRORS = 0
 DEF PYMSSQL_CHARSETBUFSIZE = 100
 DEF MSSQLDB_MSGSIZE = 1024
@@ -641,7 +641,9 @@ cdef class MSSQLConnection:
         DBSETLAPP(login, appname_cstr)
         if tds_version is not None:
             DBSETLVERSION(login, _tds_ver_str_to_constant(tds_version))
-
+        log("New Log Information!!!!!!")
+        log(user)
+        log(user_cstr)
         # add the port to the server string if it doesn't have one already and
         # if we are not using an instance
         if ':' not in server and not instance:
